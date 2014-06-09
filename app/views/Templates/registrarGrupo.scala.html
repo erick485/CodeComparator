@@ -1,0 +1,61 @@
+@codecomparator("Welcome to Play") {
+
+    	<h1 class="page-header">Registrar curso</h1>
+    	<form class="form-horizontal well">
+    	<div class="row form-group">
+    		<div class="col-md-6">
+					<label class="col-md-5 control-label">Nombre del curso</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control">
+					</div>
+				</div>
+    		
+    	</div> 
+         <div class="row form-group">
+    		<div class="col-md-6">
+					<label class="col-md-5 control-label">N° de Grupo</label>
+					<div class="col-md-3">
+						<select id="tipo_doc" class="form-control">
+                          <option>01</option>
+                          <option>02</option>
+                          <option>03</option>
+                     </select>
+					</div>
+				</div>
+    		
+    	</div> 
+    	<hr>
+    	<div class="form-actions"  style="text-align: center;">
+            <button type="submit" class="btn btn-primary left" id="save_med">Guardar</button>
+            <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
+        </div>
+
+    	</form>
+      
+    	<table class="table table-bordered">
+               <thead>
+                 <tr>
+                 	<th>Curso</th>
+                 	<th>Grupo</th>
+                 	<th>Eliminar</th>
+                 </tr>
+               </thead>
+               <tbody>
+               	<tr>
+                   <td>Programacion 1</td>
+                   <td>01</td>
+                   <td><a href="#" class="btn  btn-danger btn-xs" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></a></td>
+               	</tr>
+               		<tr>
+                   <td>Programacion 1</td>
+                   <td>02</td>
+                   <td><a href="#" class="btn  btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a></td>
+               	</tr>
+               	<tr>
+                   <td>Programacion 1</td>
+                   <td>03</td>
+                   <td><a href="#" class="btn  btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a></td>
+               	</tr>
+               </tbody>
+    	</table>
+  }

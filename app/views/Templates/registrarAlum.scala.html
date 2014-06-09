@@ -1,0 +1,132 @@
+@codecomparator("Welcome to Play") {
+      
+<br>		
+		<form class="form-horizontal ">
+		<div class="row form-group">
+		      <div class="col-md-6">
+			     <label class="col-md-5 control-label" style="margin-left: -31%;">Curso</label>
+			    <div class="col-md-4">
+				   <select class="form-control">
+                    <option>Programación</option>
+                    <option>Algoritmica 1</option>
+                   </select>
+
+			</div>
+		</div> 		
+		</div>
+			<div class="row form-group">
+		       <div class="col-md-6">
+			     <label class="col-md-5 control-label" style="margin-left: -31%;">Grupo</label>
+			    <div class="col-md-3">
+				   <select class="form-control">
+                    <option>01</option>
+                    <option>02</option>
+                   </select>
+
+			</div>
+		</div> 		
+		</div>
+		
+		<h3 class="page-header">Registrar alumno</h3>
+		<div class="highlight">
+			<div class="row form-group">
+			<div class="col-md-6">
+				<label class="col-md-5 control-label" >Código</label>
+				<div class="col-md-7">
+				<input type="text" class="form-control" >
+			</div>
+
+			</div>
+
+		</div>
+		<div class="row form-group">
+			 <div class="col-md-6">
+           	 <label class="col-md-5 control-label">Nombre</label>
+           	 <div class="col-md-7">
+           	 	<input type="text" class="form-control">
+           	 </div>
+           </div>
+           
+		</div>
+    <div class="row form-group">
+       <div class="col-md-6">
+             <label class="col-md-5 control-label">Apellido paterno</label>
+             <div class="col-md-7">
+              <input type="text" class="form-control">
+             </div>
+           </div>
+           <div class="col-md-6">
+             <label class="col-md-5 control-label">Apellido materno</label>
+             <div class="col-md-7">
+              <input type="text" class="form-control">
+             </div>
+           </div>
+    </div>
+		<hr>
+		<div class="form-actions"  style="text-align: center;">
+            <button type="submit" class="btn btn-primary left" id="save_med">Guardar</button>
+            <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
+        </div>
+
+		</div>
+		
+        <div class="alert alert-success">
+   <strong style="display: block;text-align: center;">Registro exitoso</strong>
+    </div>
+		</form>	
+		<br>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                 <td>09200220</td>
+                 <td>Danilo</td>
+                 <td>Carranza Chiara</td>
+                 <td><a href="#" class="btn btn-warning btn-xs" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                 <td><button  class="btn  btn-danger btn-xs" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-trash"></span></button></td>
+				</tr>
+				<tr>
+                    <td>09200216</td>
+                    <td>Jorge</td>
+                    <td>Tello Gamarra</td>
+                 <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
+
+                    <td><a href="#" class="btn  btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+				<tr>
+                <td>09200223</td>
+                 <td>Carolina</td>
+                <td>Humamanzisa Gironda</td>
+                 <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
+
+                <td><a href="#" class="btn  btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+				<tr>
+                   <td>09200056</td> 
+                   <td>Jose</td>
+                   <td>Hinojoza Acevedo</td>
+                 <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
+
+                   <td><a href="#" class="btn  btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+				<tr>
+                   <td>09200230</td> 
+                   <td>Pamela</td>
+                   <td>Aqguirre Ayala</td>
+                 <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
+
+                   <td><a href="#" class="btn  btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+    
+	
+}

@@ -1,0 +1,39 @@
+@main("Welcome to Play") {
+
+       @if(flash.containsKey("success")){
+      
+
+        <script type="text/javascript">
+          $(function(){
+               $("#usuario").addClass("has-error");
+               $("#contrasenia").addClass("has-error");
+               $("#message_error").text("El usuario o la contraseña esta incorrecto");
+               $("#message_error").show();
+
+
+          });
+        </script>
+        }
+       
+        <form class="form" id="login" action="/codecomparator/login" method="post" role="form">
+         	<img src="@routes.Assets.at("img/icon_login.png")" style="width: 35%;border-radius: 50%;margin-left: 32%;"> 
+         	<br>
+         	<br>
+          <div id="usuario" class="form-group">
+            
+          <input type="text" name="t_usuario" class="required form-control" placeholder="Usuario">
+          </div>
+          <div id="contrasenia" class="form-group">
+            <input type="password" name="t_password" class="required form-control" placeholder="Contraseña">              
+          </div>
+          <div><span id="message_error" style="display:none;color:#b94a48;"></span></div>
+            <label class="checkbox">
+              <input type="checkbox" value="remember-me">Recordarme
+           </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+
+
+         </form>
+         <a href="#" class="crear_cuent">¿Haz olvidado tu contraseña?</a>
+         <a href="@routes.Application.crearCuenta()" class="crear_cuent">Crear una cuenta</a>
+}

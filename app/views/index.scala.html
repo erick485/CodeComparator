@@ -1,0 +1,60 @@
+@(message: String)
+
+@main("Welcome to Play") {
+
+
+<div id="carousel-example-captions" class="carousel slide carrusel-head" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-captions" data-slide-to="0" class=""></li>
+            <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
+            <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item next left">
+                <img class="carrusel-img" src="@routes.Assets.at("img/foto1.jpg")">
+                <div class="carousel-caption">
+                    <h3>Maquinas de Correr</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img  class="carrusel-img" src="@routes.Assets.at("img/foto3.jpg")">
+                <div class="carousel-caption">
+                    <h3>Maquinas de Entrenamiento</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="item active left">
+                <img class="carrusel-img" src="@routes.Assets.at("img/center_gym.jpg")">
+                <div class="carousel-caption">
+                    <h3>Ambiente de Entrenamiento</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <br>
+    <div class="row">
+        <div class="page-header">
+            <h1>EdiGym</h1>
+        </div>
+          <p class="lead">EdiGym dió sus primeros pasos por el año 2000 en la sala de una casa pequeña, con un área de 50 mt2 en el cual se tenia maquinas musculares y una zona de aeróbicos para 6 personas; el modelo de negocio era de un gimnasio acogedor donde cada cliente que llegaba a EdiGym era recibido con una gran sonrisa y con una muy buena atención por parte del personal que trabajaba en el gimnasio.</p>
+          <p class="lead">Esperamos en corto tiempo lograr una expansión representativa en el mercado y así poder consolidarnos no sólo como un buen gimnasio sino como una buena opción de inversión.</p>
+    </div>
+
+    <div class="column-content-wrapper">
+    <p style="margin-left: 83%">Siguenos</p>
+        <div class="bottom-col-content widget_text substitute_widget_class" style="margin-left:830px">
+            <div class="textwidget" style="margin-left: 35.2%"><a href="https://www.facebook.com/pages/ALDOS-GYM/210795652303512?fref=ts" target="_blank"><img src="http://www.housegym.com/wp-content/uploads/2012/05/icono-facebook.png" width="64" height="64"></a>
+                <a href="https://twitter.com/#!/HouseGymPeru" target="_blank"><img src="http://www.housegym.com/wp-content/uploads/2012/05/icono-twitter.png" width="64" height="64"></a>
+                <a href="http://www.housegym.com/contactenos/" target="_blank"><img src="http://www.housegym.com/wp-content/uploads/2012/05/icono-mail.png" width="64" height="64"></a>
+            </div>
+        </div>
+    </div>
+}

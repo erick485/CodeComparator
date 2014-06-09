@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/docs.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/pygments-manni.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/codecomparator.css")">
+        <script type="text/javascript" src="@routes.Assets.at("js/jquery.js")"></script>
+        <script type="text/javascript" src="@routes.Assets.at("js/jquery.validate.js")"></script>        
+        <script type="text/javascript" src="@routes.Assets.at("js/codecomparator.js")"></script>
+</head>
+<body style="background-color: #eee;">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CodeComparator</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+              
+              <a href="@routes.Application.codecomparator()" class="btn btn-danger" style="margin-top: 8px;">Iniciar Sesión</a>                            
+             
+        </ul>
+         
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+<div class="container">
+
+ @if(flash.containsKey("claves")){
+      
+
+        <script type="text/javascript">
+          $(function(){
+              
+              $("#confir_clave").addClass("has-error");
+               $("#message_clave").text("Las contraseñas ingresadas no coinciden");
+               $("#message_clave").show();
+          });
+        </script>
+  }
+  @if(flash.containsKey("usua")){
+      
+
+        <script type="text/javascript">
+          $(function(){
+              
+               $("#usuar").addClass("has-error");
+               $("#message_usuario").text("El usuario ya existe");
+               $("#message_usuario").show();
+          });
+        </script>
+  }
+   @if(flash.containsKey("codi")){
+      
+
+        <script type="text/javascript">
+          $(function(){
+              
+               $("#cod_doc").addClass("has-error");
+               $("#message_cod").text("El código ya existe");
+               $("#message_cod").show();
+          });
+        </script>
+  }
+   @if(flash.containsKey("registro")){
+     <br> 
+    <div class="alert alert-success" style="text-align: center;">
+      <strong>@flash.get("registro")</strong> 
+    </div>
+  }
+<h1 class="page-header">Registro docente</h1>
+
+    <form class="form well" id="crearDocent" action="crear" method="post" role="form">
+    	<h3>Nombre de usuario y contraseña</h3>
+      <div class="row">
+    		<div id="usuar" class="col-md-6 form-group">
+    			<label >Usuario</label>    			
+                   <input type="text" name="t_usuario" class="form-control">    		
+           <span id="message_usuario" style="display:none;color:#b94a48;"></span>
+    		</div>
+    		
+    	</div>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label>Contraseña</label>          
+           <input type="password" name="t_password" class="form-control">          
+        </div>
+        <div id="confir_clave" class="col-md-6 form-group">
+          <label>Confirmar contraseña</label>
+          
+                   <input type="password" name="rep_password" class="form-control">
+          
+          <span id="message_clave" style="display:none;color:#b94a48;"></span>
+        </div>
+      </div>
+      <br>
+      <h3>Información del docente</h3>
+      <div class="row">
+        <div id="cod_doc" class="col-md-6 form-group">
+          <label >Código</label>
+        
+          <input type="text" name="t_codigo" class="form-control">
+          <span id="message_cod" style="display:none;color:#b94a48;"></span>        
+        </div>
+      </div>
+    	<div class="row">
+    		<div class="col-md-6 form-group">
+          <label>Nombre</label>
+          
+                   <input type="text" name="t_nombre" class="form-control">
+          
+        </div>
+    		
+    	</div>
+    	<div class="row">
+    		<div class="col-md-6 form-group">
+          <label>Apellido paterno</label>
+          
+           <input type="text" name="t_apellido_paterno" class="form-control">
+          
+        </div>
+    		<div class="col-md-6 form-group">
+    			<label>Apellido materno</label>
+    			
+           <input type="text" name="t_apellido_materno" class="form-control">
+    			
+    		</div>
+    	</div>
+    	<hr>
+    	<div class="form-actions"  style="text-align: center;">
+            <button type="submit" class="btn btn-primary left" id="save_med">Guardar</button>
+            <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
+        </div>
+    </form>
+	
+</div>
+
+</body>
+</html>
+
+

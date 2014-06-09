@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+GET     /                           controllers.Application.index()
+GET     /codecomparator             controllers.Application.codecomparator()
+POST    /codecomparator/login       controllers.Application.authenticate()  
+GET     /codecomparator/home        controllers.Application.home() 
+GET     /codecomparator/crear       controllers.Application.crearCuenta()  
+POST    /codecomparator/crear       controllers.Application.addCuenta()
+
+GET     /codecomparator/cerrar      controllers.Application.logout() 
+GET     /codecomparator/curso       controllers.Application.curso()  
+GET     /codecomparator/alumno      controllers.Application.alumno()
+GET     /codecomparator/confEval    controllers.Application.confEvaluacion()
+GET     /codecomparator/asigAlum    controllers.Application.asigAlum()   
+GET     /codecomparator/iniciarExam controllers.Application.iniciarExam()  
+GET     /codecomparator/compProy     controllers.Application.compProy()
+GET     /codecomparator/cambContr   controllers.Application.cambContr()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
