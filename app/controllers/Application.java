@@ -27,6 +27,11 @@ public class Application extends Controller {
      public static Result alumno(){
         return ok(registrarAlum.render());
     }
+    
+    public static Result historiales(){
+        return ok(historiales.render());
+    } 
+
      public static Result confEvaluacion(){
         return ok(confEval.render());
     }
