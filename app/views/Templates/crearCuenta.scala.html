@@ -8,6 +8,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/pygments-manni.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/codecomparator.css")">
         <script type="text/javascript" src="@routes.Assets.at("js/jquery.js")"></script>
+        <script type="text/javascript" src="@routes.Assets.at("js/bootstrap.js")"></script> 
         <script type="text/javascript" src="@routes.Assets.at("js/jquery.validate.js")"></script>        
         <script type="text/javascript" src="@routes.Assets.at("js/codecomparator.js")"></script>
 </head>
@@ -72,17 +73,54 @@
         </script>
   }
    @if(flash.containsKey("registro")){
-     <br> 
-    <div class="alert alert-success" style="text-align: center;">
-      <strong>@flash.get("registro")</strong> 
-    </div>
+     
+    <script type="text/javascript">
+      $(function(){
+           $("#myModal").modal("show");
+      });
+    </script>
   }
-<h1 class="page-header">Registro docente</h1>
+
+<h1 class="page-header" style="text-align:center;">Registro docente</h1>
 
     <form class="form well" id="crearDocent" action="crear" method="post" role="form">
-    	<h3>Nombre de usuario y contraseña</h3>
+    	
       <div class="row">
-    		<div id="usuar" class="col-md-6 form-group">
+        <div id="cod_doc" class="col-md-12 form-group">
+          <label >Código</label>
+        
+          <input type="text" name="t_codigo" class="form-control">
+          <span id="message_cod" style="display:none;color:#b94a48;"></span>        
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Nombre</label>
+          
+                   <input type="text" name="t_nombre" class="form-control">
+          
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Apellido paterno</label>
+          
+           <input type="text" name="t_apellido_paterno" class="form-control">
+          
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Apellido materno</label>
+          
+           <input type="text" name="t_apellido_materno" class="form-control">
+          
+        </div>
+      </div>
+      <div class="row">
+    		<div id="usuar" class="col-md-12 form-group">
     			<label >Usuario</label>    			
                    <input type="text" name="t_usuario" class="form-control">    		
            <span id="message_usuario" style="display:none;color:#b94a48;"></span>
@@ -90,11 +128,14 @@
     		
     	</div>
       <div class="row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-12 form-group">
           <label>Contraseña</label>          
            <input type="password" name="t_password" class="form-control">          
         </div>
-        <div id="confir_clave" class="col-md-6 form-group">
+       
+      </div>
+      <div class="row"> 
+         <div id="confir_clave" class="col-md-12 form-group">
           <label>Confirmar contraseña</label>
           
                    <input type="password" name="rep_password" class="form-control">
@@ -102,48 +143,35 @@
           <span id="message_clave" style="display:none;color:#b94a48;"></span>
         </div>
       </div>
-      <br>
-      <h3>Información del docente</h3>
-      <div class="row">
-        <div id="cod_doc" class="col-md-6 form-group">
-          <label >Código</label>
-        
-          <input type="text" name="t_codigo" class="form-control">
-          <span id="message_cod" style="display:none;color:#b94a48;"></span>        
-        </div>
-      </div>
-    	<div class="row">
-    		<div class="col-md-6 form-group">
-          <label>Nombre</label>
-          
-                   <input type="text" name="t_nombre" class="form-control">
-          
-        </div>
-    		
-    	</div>
-    	<div class="row">
-    		<div class="col-md-6 form-group">
-          <label>Apellido paterno</label>
-          
-           <input type="text" name="t_apellido_paterno" class="form-control">
-          
-        </div>
-    		<div class="col-md-6 form-group">
-    			<label>Apellido materno</label>
-    			
-           <input type="text" name="t_apellido_materno" class="form-control">
-    			
-    		</div>
-    	</div>
+           
     	<hr>
     	<div class="form-actions"  style="text-align: center;">
-            <button type="submit" class="btn btn-primary left" id="save_med">Guardar</button>
+          <button  class="btn btn-primary left" id="save_med" >Guardar</button>
             <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
         </div>
     </form>
 	
 </div>
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+          <p>Se registro correctamente</p>
+          <br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+        <a href="@routes.Application.codecomparator()" class="btn btn-primary">Aceptar</a>        
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 

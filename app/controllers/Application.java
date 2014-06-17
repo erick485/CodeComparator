@@ -124,7 +124,7 @@ public class Application extends Controller {
      }
 
      public static Result home(){
-         return ok(home.render());
+         return ok(homeCode.render());
      }
 
 }

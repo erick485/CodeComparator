@@ -22,3 +22,54 @@
 .hour_posi{
     margin-left: 13%;
 } 
+#team{
+position: absolute;
+margin-top: -18%;
+width: 129%;
+margin-left: 32%;
+}
+
+#team>li{
+color: black;
+font-weight: bold;
+font-size: 21px;
+width: 26%;
+}
+#text_inte{
+font-weight: bold;
+color: black;
+position: absolute;
+margin-top: -35%;
+margin-left: 28%;
+font-size: 44px;    
+}
+
+#text_head{
+font-weight: bold;
+color: black;
+position: absolute;
+margin-top: -36%;
+margin-left: -5%;
+font-size: 44px;
+}
+#text_body{
+color: black;
+font-weight: bold;
+position: absolute;
+margin-top: -21%;
+margin-left: -8%;
+font-size: 21px;
+}
+#crearDocent{
+    width: 49%;
+    margin-left: 27%;
+}
+#tem_login{
+    color:#eee;
+    font-weight: bold;
+    margin-left: 36%;
+}
+#tem_login:hover{
+    color:#fff; 
+    text-decoration:none; 
+};
