@@ -88,4 +88,21 @@ $(function(){
     }
   });
 
+  $("#inicio").click(function(){
+      $("#inicio").hide();
+      $("#final").show();
+      $("#time").chrony({
+         hour:0,
+         minute:1,
+         second:3,
+         finish:function(){
+
+         }
+      });
+  });
+
+  $("#final").click(function(){
+        $("#time").addClass("color_time");
+        $("#time").text("00:00:00");
+  });
 });

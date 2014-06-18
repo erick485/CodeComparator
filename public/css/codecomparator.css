@@ -12,7 +12,13 @@
     padding: 10px 10px 10px 10px;
     border-radius: 11px;
 }
-
+#time{
+font-weight: bold;
+font-size: 17px;
+}
+.color_time{
+    color:rgb(255, 0, 0)
+}
 .crear_cuent{
 	text-align: center;
     margin-top: 2%;
