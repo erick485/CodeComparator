@@ -14,9 +14,11 @@ public class Docente extends Model{
     public String t_nombre;
     public String t_apellido_paterno;
     public String t_apellido_materno;
+    @OneToMany(mappedBy="docente", cascade=CascadeType.ALL)
+    public List<Curso> cursos;
    
-   
-
+    @OneToMany(mappedBy="docente", cascade=CascadeType.ALL)
+    public List<Alumno> alumno;
     public static Finder<Integer,Docente> find = new Finder<Integer,Docente>(
 			Integer.class,Docente.class
 	);
@@ -34,7 +36,8 @@ public class Docente extends Model{
     public static Docente findByCod(Integer cod){
          return find.where().eq("t_codigo",cod).findUnique();
     }
-
+    
+    
    /* public static Docente getIdDocente(String nombre,String ap){
       return find.where().eq("t_usuario", email)
             .eq("t_password", password).findUnique();

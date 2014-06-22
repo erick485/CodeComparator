@@ -1,0 +1,26 @@
+@(alumnos:List[Alumno])
+
+<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+			@for(alumno<-alumnos){
+
+				<tr>
+                 <td>@alumno.t_codigo</td>
+                 <td>@alumno.t_nombre</td>
+                 <td>@alumno.t_apellido_paterno  @alumno.t_apellido_materno</td>
+                 <td><a href="#" class="btn btn-warning" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                 <td><button  class="btn  btn-danger" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-trash"></span></button></td>
+				</tr>
+			}
+				
+			</tbody>
+		</table>

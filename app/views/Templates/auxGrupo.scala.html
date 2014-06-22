@@ -1,0 +1,30 @@
+@(cursos:List[Curso])
+<div class="col-md-6">
+	<label class="col-md-5 control-label" style="margin-left: -31%;">Grupo</label>
+	 <div class="col-md-3">
+				   <select class="form-control" id="grup" name="t_grupo" >
+				   @for(curso<-cursos){
+                    <option >@curso.n_grupo</option>
+                   }
+                    
+                   </select>
+
+	 </div>
+</div> 	
+
+<script type="text/javascript">
+	$(function(){
+		
+		//alert($("#cursos").val()+" / "+$("#grup").val());
+		curs=$("#cursos").val();
+		grupo=$("#grup").val();
+		$("#list_alumnos").load("http://localhost:9000/codecomparator/listAlumnos?curso="+escape(curs)+"&grupo="+escape(grupo));
+
+
+		$("#grup").change(function(){
+			curs1=$("#cursos").val();
+	       	grupo1=$("#grup").val();
+			$("#list_alumnos").load("http://localhost:9000/codecomparator/listAlumnos?curso="+escape(curs1)+"&grupo="+escape(grupo1));
+		});
+	})
+</script>

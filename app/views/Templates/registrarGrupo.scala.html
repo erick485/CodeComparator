@@ -1,12 +1,14 @@
+@(cursos:List[Curso])
+
 @codecomparator("Welcome to Play") {
 
     	<h1 class="page-header">Registrar curso</h1>
-    	<form class="form-horizontal well">
+    	<form class="form-horizontal well" action="registrar_grupo" method="post" role="form">
     	<div class="row form-group">
     		<div class="col-md-6">
 					<label class="col-md-5 control-label">Nombre del curso</label>
 					<div class="col-md-7">
-						<input type="text" class="form-control">
+						<input type="text" name="t_nombre" class="form-control">
 					</div>
 				</div>
     		
@@ -15,10 +17,10 @@
     		<div class="col-md-6">
 					<label class="col-md-5 control-label">N° de Grupo</label>
 					<div class="col-md-3">
-						<select id="tipo_doc" class="form-control">
-                          <option>01</option>
-                          <option>02</option>
-                          <option>03</option>
+						<select id="tipo_doc" name="n_grupo" class="form-control">
+                          <option >01</option>
+                          <option >02</option>
+                          <option >03</option>
                      </select>
 					</div>
 				</div>
@@ -26,8 +28,8 @@
     	</div> 
     	<hr>
     	<div class="form-actions"  style="text-align: center;">
-            <button type="submit" class="btn btn-primary left" id="save_med">Guardar</button>
-            <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
+            <button type="submit" class="btn btn-primary left" >Guardar</button>
+            <button type="reset" class="btn btn-default left" >Cancelar</button>
         </div>
 
     	</form>
@@ -41,21 +43,36 @@
                  </tr>
                </thead>
                <tbody>
+               @for(curso<-cursos){
                	<tr>
-                   <td>Programacion 1</td>
-                   <td>01</td>
-                   <td><a href="#" class="btn  btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></a></td>
+                   <td>@curso.t_nombre</td>
+                   <td>@curso.n_grupo</td>
+                   <td><a href="#" class="btn  btn-danger" data-toggle="modal" data-target="#@curso.n_curso_id"><span class="glyphicon glyphicon-trash"></span></a></td>
                	</tr>
-               		<tr>
-                   <td>Programacion 1</td>
-                   <td>02</td>
-                   <td><a href="#" class="btn  btn-danger"><span class="glyphicon glyphicon-trash"></span></a></td>
-               	</tr>
-               	<tr>
-                   <td>Programacion 1</td>
-                   <td>03</td>
-                   <td><a href="#" class="btn  btn-danger"><span class="glyphicon glyphicon-trash"></span></a></td>
-               	</tr>
+                }
+               		
                </tbody>
     	</table>
+@for(curso<-cursos){      
+<div class="modal fade" id="@curso.n_curso_id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+          <p>¿Esta seguro de eliminar el Curso?</p>
+          <br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>  
+        <a type="button" href="@routes.Application.deleteCurso(curso.n_curso_id)" class="btn btn-primary">Si</a>        
+      </div>
+    </div>
+  </div>
+</div>
+}
   }

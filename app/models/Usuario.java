@@ -38,7 +38,9 @@ public class Usuario extends Model{
     public static Usuario findByEmail(String email){
         return find.where().eq("t_usuario", email).findUnique();
     }
-
+    public static Usuario findByUser(String usuario){
+              return find.where().eq("t_usuario",usuario).findUnique();
+    } 
     public static Usuario authenticate(String email,String password){
         return find.where().eq("t_usuario", email)
             .eq("t_password", password).findUnique();

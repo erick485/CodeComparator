@@ -20,5 +20,12 @@ GET     /codecomparator/iniciarExam controllers.Application.iniciarExam()
 GET     /codecomparator/compProy     controllers.Application.compProy()
 GET     /codecomparator/cambContr   controllers.Application.cambContr()
 GET     /codecomparator/historiales controllers.Application.historiales()
+GET     /codecomparator/deleteCurso controllers.Application.deleteCurso(id:Integer) 
+GET     /codecomparator/alumn      controllers.Application.alumn(curso:String)
+
+GET     /codecomparator/listAlumnos controllers.Application.listAlum(curso:String,grupo:String)
+
+POST    /codecomparator/registrar_alumno  controllers.Application.regisAlum() 
+POST    /codecomparator/registrar_grupo controllers.Application.regisGrupo()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
