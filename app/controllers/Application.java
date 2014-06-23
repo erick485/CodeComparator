@@ -9,6 +9,7 @@ import views.html.Templates.*;
 import views.html.*;
 
 public class Application extends Controller {
+        
 
     public static Result index() {
         return redirect("/codecomparator");
@@ -33,35 +34,43 @@ public class Application extends Controller {
         return ok(registrarAlum.render(Curso.findCursoDocent(user.n_docente_id)));
     }
 
-    public static Result regisAlum(){
+    public static Result regisAlum(String cod,String nombre,String ap_paterno,String ap_materno,String curso,String grupo){
        Form<Alumno> alumForm =form(Alumno.class).bindFromRequest();    	
        if(alumForm.hasErrors()){
                  return badRequest();
         }else{
            Usuario user=Usuario.findByUser(session().get("usuario")); 
 
-           Alumno.create(Docente.find.byId(user.n_docente_id),alumForm.get().t_codigo,alumForm.get().t_curso,alumForm.get().t_grupo,
-           	alumForm.get().t_nombre,alumForm.get().t_apellido_paterno,alumForm.get().t_apellido_materno);
+           Alumno.create(Docente.find.byId(user.n_docente_id),cod,curso,grupo,
+           	nombre,ap_paterno,ap_materno);
             
-            return redirect(routes.Application.alumno());      
- 
+         //   return redirect(routes.Application.alumno());      
+          return ok(listAlumno.render(Alumno.findAlumno(user.n_docente_id,curso,grupo)));
         }
     }
 
     public static Result listAlum(String curso,String grupo){
        
+     
+       //Aplication.curso1=curso;
+       //grupo1=grupo;
          System.out.print(curso+" "+grupo);
         Usuario user=Usuario.findByUser(session().get("usuario"));
              System.out.print("--"+curso+" "+grupo);
         return ok(listAlumno.render(Alumno.findAlumno(user.n_docente_id,curso,grupo)));
     }
-   
+    public static Result listAlumnos(String curso,String grupo,Integer id){
+       
+     System.out.print("eliminar!!!");
+         Alumno.find.ref(id).delete();
+      
+        Usuario user=Usuario.findByUser(session().get("usuario"));
+        return ok(listAlumno.render(Alumno.findAlumno(user.n_docente_id,curso,grupo)));
+    }
     public static Result alumn(String curso){
 
         Usuario user=Usuario.findByUser(session().get("usuario"));
 
-        System.out.print("****"+curso+" "+user.n_docente_id);
-       // findnameCursoDocent
         return ok(auxGrupo.render(Curso.findnameCursoDocent(user.n_docente_id,curso)));
     }
     
@@ -89,6 +98,8 @@ public class Application extends Controller {
        Curso.find.ref(id).delete();
        return redirect(routes.Application.curso());
     }
+    
+   
 
     public static Result regisGrupo(){
 

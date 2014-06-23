@@ -18,9 +18,59 @@
                  <td>@alumno.t_nombre</td>
                  <td>@alumno.t_apellido_paterno  @alumno.t_apellido_materno</td>
                  <td><a href="#" class="btn btn-warning" ><span class="glyphicon glyphicon-pencil"></span></a></td>
-                 <td><button  class="btn  btn-danger" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-trash"></span></button></td>
+                 <td><button  class="btn  btn-danger" data-toggle="modal" data-target="#@alumno.n_alumno_id" ><span class="glyphicon glyphicon-trash"></span></button></td>
 				</tr>
 			}
 				
 			</tbody>
 		</table>
+   
+		@for(alumno<-alumnos){      
+<div class="modal fade"  id="@alumno.n_alumno_id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+          <p>¿Esta seguro de eliminar al alumno?</p>
+          <br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>  
+        <a type="button" data="@alumno.n_alumno_id"   class="btn btn-primary deleteAlum">Si</a>        
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+
+<script type="text/javascript">
+  $(function(){
+     $(".deleteAlum").click(function(){
+          
+          //alert("hola mundo");
+
+          curs=$("#cursos").val();
+          grupo=$("#grup").val();
+          id=$(this).attr("data");
+          // alert(id);
+        /*$("#"+id).modal("hide",function(){
+          alert("hola mundo");
+        });*/
+        //$("#"+id).show();
+        $("#"+id).modal("hide");
+
+        setTimeout(function(){
+$("#list_alumnos").load("http://localhost:9000/codecomparator/listaAlumnos?curso="+escape(curs)+"&grupo="+escape(grupo)+"&elim="+escape(id));
+        }, 100);
+     /* $("#list_alumnos").load("http://localhost:9000/codecomparator/listAlumnos?curso="+escape(curs)+"&grupo="+escape(grupo)+"&elim="+escape(id));
+       */ 
+     });
+  });
+
+</script>

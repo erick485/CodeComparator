@@ -25,7 +25,10 @@ GET     /codecomparator/alumn      controllers.Application.alumn(curso:String)
 
 GET     /codecomparator/listAlumnos controllers.Application.listAlum(curso:String,grupo:String)
 
-POST    /codecomparator/registrar_alumno  controllers.Application.regisAlum() 
+GET     /codecomparator/listaAlumnos controllers.Application.listAlumnos(curso:String,grupo:String,elim:Integer)
+
+GET    /codecomparator/registrar_alumno  controllers.Application.regisAlum(codigo:String,nombre:String,ap_paterno:String,ap_materno:String,curso:String,grupo:String) 
+
 POST    /codecomparator/registrar_grupo controllers.Application.regisGrupo()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

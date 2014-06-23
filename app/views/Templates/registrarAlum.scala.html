@@ -27,7 +27,7 @@
 			<div class="col-md-6">
 				<label class="col-md-5 control-label" >Código</label>
 				<div class="col-md-7">
-				<input type="text" name="t_codigo" class="form-control" >
+				<input type="text" id="codigo" name="t_codigo" class="form-control" >
 			</div>
 
 			</div>
@@ -37,7 +37,7 @@
 			 <div class="col-md-6">
            	 <label class="col-md-5 control-label">Nombre</label>
            	 <div class="col-md-7">
-           	 	<input type="text" name="t_nombre" class="form-control">
+           	 	<input type="text" id="nombre" name="t_nombre" class="form-control">
            	 </div>
            </div>
            
@@ -46,7 +46,7 @@
        <div class="col-md-6">
              <label class="col-md-5 control-label">Apellido paterno</label>
              <div class="col-md-7">
-              <input type="text" name="t_apellido_paterno" class="form-control">
+              <input type="text" id="ap_paterno" name="t_apellido_paterno" class="form-control">
              </div>
            </div>
            
@@ -55,13 +55,13 @@
     	<div class="col-md-6">
              <label class="col-md-5 control-label">Apellido materno</label>
              <div class="col-md-7">
-              <input type="text" name="t_apellido_materno" class="form-control">
+              <input type="text" id="ap_materno" name="t_apellido_materno" class="form-control">
              </div>
            </div>
     </div>
 		<hr>
 		<div class="form-actions"  style="text-align: center;">
-            <button type="submit" class="btn btn-primary left" >Guardar</button>
+            <a href="#" id="save_alum" class="btn btn-primary left" >Guardar</a>
             <button type="reset" class="btn btn-default left" >Cancelar</button>
         </div>
 
@@ -76,6 +76,24 @@
 			
 
 		</div>
+<script type="text/javascript">
+	$(function(){
+         
+
+   $("#save_alum").click(function(){
+     
+      cod=$("#codigo").val();
+      nombre=$("#nombre").val();
+      ap_paterno=$("#ap_paterno").val();
+      ap_materno=$("#ap_materno").val();
+      curso=$("#cursos").val();
+      grupo=$("#grup").val();
+     $("#list_alumnos").load("http://localhost:9000/codecomparator/registrar_alumno?codigo="+escape(cod)+"&nombre="+escape(nombre)+"&ap_paterno="+escape(ap_paterno)+"&ap_materno="+escape(ap_materno)+"&curso="+escape(curso)+"&grupo="+escape(grupo));
+   });
+
+	});
+</script>
+
 		
     
 	
