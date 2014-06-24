@@ -32,6 +32,17 @@ create table docente (
   constraint pk_docente primary key (n_docente_id))
 ;
 
+create table evaluacion (
+  n_evaluacion_id           integer auto_increment not null,
+  titulo                    varchar(255),
+  tiempo                    varchar(255),
+  curso                     varchar(255),
+  grupo                     varchar(255),
+  descripcion               varchar(255),
+  n_docente_id              integer,
+  constraint pk_evaluacion primary key (n_evaluacion_id))
+;
+
 create table usuario (
   n_usuario_id              integer auto_increment not null,
   t_usuario                 varchar(255),
@@ -45,6 +56,8 @@ alter table alumno add constraint fk_alumno_docente_1 foreign key (n_docente_id)
 create index ix_alumno_docente_1 on alumno (n_docente_id);
 alter table curso add constraint fk_curso_docente_2 foreign key (n_docente_id) references docente (n_docente_id) on delete restrict on update restrict;
 create index ix_curso_docente_2 on curso (n_docente_id);
+alter table evaluacion add constraint fk_evaluacion_docente_3 foreign key (n_docente_id) references docente (n_docente_id) on delete restrict on update restrict;
+create index ix_evaluacion_docente_3 on evaluacion (n_docente_id);
 
 
 
@@ -57,6 +70,8 @@ drop table alumno;
 drop table curso;
 
 drop table docente;
+
+drop table evaluacion;
 
 drop table usuario;
 

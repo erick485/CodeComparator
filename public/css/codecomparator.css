@@ -1,6 +1,16 @@
 .header_botom{
 	width: 135px;
 }
+.pep:hover{
+    cursor: pointer;
+}
+.pep{
+    background-color: #fff;
+    
+}
+#btn_2:hover{
+
+}
 .error{
     color: #b94a48;
 }

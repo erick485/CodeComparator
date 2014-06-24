@@ -15,20 +15,30 @@ GET     /codecomparator/cerrar      controllers.Application.logout()
 GET     /codecomparator/curso       controllers.Application.curso()  
 GET     /codecomparator/alumno      controllers.Application.alumno()
 GET     /codecomparator/confEval    controllers.Application.confEvaluacion()
-GET     /codecomparator/asigAlum    controllers.Application.asigAlum()   
+GET     /codecomparator/asigAlum    controllers.Application.asigAlum(tit:String,tiempo:String,curso:String,grupo:String,descr:String)   
 GET     /codecomparator/iniciarExam controllers.Application.iniciarExam()  
 GET     /codecomparator/compProy     controllers.Application.compProy()
 GET     /codecomparator/cambContr   controllers.Application.cambContr()
 GET     /codecomparator/historiales controllers.Application.historiales()
 GET     /codecomparator/deleteCurso controllers.Application.deleteCurso(id:Integer) 
-GET     /codecomparator/alumn      controllers.Application.alumn(curso:String)
+GET     /codecomparator/alumn      controllers.Application.alumn(curso:String) 
 
+GET     /codecomparator/confExam      controllers.Application.confExam(curso:String)
+
+POST   /codecomparator/ controllers.Application.historiales()
 GET     /codecomparator/listAlumnos controllers.Application.listAlum(curso:String,grupo:String)
 
 GET     /codecomparator/listaAlumnos controllers.Application.listAlumnos(curso:String,grupo:String,elim:Integer)
 
 GET    /codecomparator/registrar_alumno  controllers.Application.regisAlum(codigo:String,nombre:String,ap_paterno:String,ap_materno:String,curso:String,grupo:String) 
 
+
 POST    /codecomparator/registrar_grupo controllers.Application.regisGrupo()
+
+# Comparacion page
+
+GET  /codecomparator/asigAlumno    controllers.Comparacion.asigAlum(curso:String,grupo:String,tit:String)
+GET  /codecomparator/Home          controllers.Comparacion.home() 
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

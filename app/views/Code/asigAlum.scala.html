@@ -1,0 +1,121 @@
+@(curso:String,grupo:String,tit:String,alumnos:List[Alumno])
+@comparacion("Welcome to Play") {
+
+  <div class="container">
+	 <br>
+	 <br>
+	 <div class="row">
+	 	 <div class="col-md-1">
+	 	 	<strong>Curso:</strong>
+	 	 </div>
+	 	 <div class="col-md-4">
+
+	 	 	<p>@curso</p>
+	 	 </div>
+	 </div>
+	  <div class="row">
+	 	 <div class="col-md-1">
+	 	 	<strong>Grupo:</strong>
+	 	 </div>
+	 	 <div class="col-md-4">
+
+	 	 	<p>@grupo</p>
+	 	 </div>
+	 </div>
+	 <div class="row">
+	 	 <div class="col-md-1">
+	 	 	<strong>Tema:</strong>
+	 	 </div>
+	 	 <div class="col-md-4">
+
+	 	 	<p>@tit</p>
+	 	 </div>
+	 </div>
+	 <br>
+	 <div class="row highlight">
+	 	<div class="col-md-8">
+	 	<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">1</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom " id="btn_2">2</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">3</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom">4</button>	 				
+	 			</div>
+	 		</div>
+	 		<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom">5</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom">6</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom">7</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom">8</button>	 				
+	 			</div>
+	 		</div>
+	 		<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">9</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">10</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">11</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">12</button>	 				
+	 			</div>
+	 		</div>
+	 		<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">13</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom">14</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">15</button>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<button class="btn btn-default header_botom ">16</button>	 				
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<div class="col-md-4">
+	 		<table class="table table-bordered"> 
+	 			<thead>
+	 				<tr>
+	 					<th>Código</th>
+	 					<th>Nombres y Apellidos</th>
+	 				</tr>
+	 			</thead>
+	 			<tbody id="table_cod">
+                       @for(alumno<-alumnos){	 			
+	 				<tr>
+	 					<td id="fila_cod">@alumno.t_codigo<div class="pep" style="margin-top:-5% !important;">@alumno.t_codigo</div></td>
+	 					<td>@alumno.t_nombre,@alumno.t_apellido_paterno @alumno.t_apellido_materno</td>
+	 				</tr>
+	 				}
+	 				
+	 			</tbody>
+	 		</table>
+	 	</div>
+	 </div>
+	 <br>
+	
+	</div>
+}

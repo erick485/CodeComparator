@@ -1,0 +1,12 @@
+@(cursos:List[Curso])
+
+	<label class="col-md-5 control-label">Grupo</label>
+	 <div class="col-md-7">
+				   <select class="form-control" style="width:31%;" id="grup" name="grupo" >
+				   @for(curso<-cursos){
+                    <option >@curso.n_grupo</option>
+                   }
+                    
+                   </select>
+
+	 </div>

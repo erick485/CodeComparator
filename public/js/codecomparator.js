@@ -1,5 +1,35 @@
+
 $(function(){
   
+   $("#save_conf").click(function(){
+
+     
+    $("#list_eval").append("<li><a>Asignar Alumno</a></li>");
+    //setTimeout(function(){
+     $("#asig_alum").show();
+     $("#examen").show();
+    // alert( $("#titulo").val()+$("#hora").val()+$("#min").val()+$("#seg").val());
+
+   // },500);   
+    titulo=$("#titulo").val();
+    tiempo=$("#hora").val()+":"+$("#min").val()+":"+$("#seg").val();
+    curso=$("#cursos").val();
+    grupo=$("#grup").val();
+    descrip=$("#descripcion").val();
+
+        $(this).attr("href","http://localhost:9000/codecomparator/asigAlum?tit="+escape(titulo)+"&tiempo="+escape(tiempo)+"&curso="+escape(curso)+"&grupo="+escape(grupo)+"&descr="+escape(descrip));
+   });
+
+  for(var i=0;i<6;i++){
+    $("#hora").append("<option>0"+i+"</option>");
+  }
+  for(var i=0;i<60;i++){
+    if(i<10)
+     i="0"+i; 
+    $("#min").append("<option>"+i+"</option>");
+    $("#seg").append("<option>"+i+"</option>")
+  }
+
   $('#login').validate({
       
       rules:{
@@ -152,6 +182,9 @@ $(function(){
     var cadena=String($("#cursos").val());
 
      $("#grupos").load("http://localhost:9000/codecomparator/alumn?curso="+escape(cadena));
+
+     $("#div_grupo").load("http://localhost:9000/codecomparator/confExam?curso="+escape(cadena));
+
      /*$.ajax({
          url:"hfttp://localhost:9000/codecomparator/alumn?curso="+$("#cursos").val(),
          success:function(){

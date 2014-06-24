@@ -74,16 +74,31 @@ public class Application extends Controller {
         return ok(auxGrupo.render(Curso.findnameCursoDocent(user.n_docente_id,curso)));
     }
     
+    public static Result confExam(String curso){
+
+        Usuario user=Usuario.findByUser(session().get("usuario"));
+
+        return ok(auxConfExam.render(Curso.findnameCursoDocent(user.n_docente_id,curso)));
+    }
     public static Result historiales(){
         return ok(historiales.render());
     } 
 
      public static Result confEvaluacion(){
-        return ok(confEval.render());
-    }
-    public static Result asigAlum(){
+     Usuario user=Usuario.findByUser(session().get("usuario")); 
+    
+        //return ok(registrarAlum.render());
 
-        return ok(asignarAlum.render());
+        return ok(confEval.render(Curso.findCursoDocent(user.n_docente_id)));
+    }
+    public static Result asigAlum(String tit,String tiempo,String curso,String grupo,String descr){
+        Usuario user=Usuario.findByUser(session().get("usuario"));
+
+        Evaluacion.create(Docente.find.byId(user.n_docente_id),tit,tiempo,curso,grupo,descr);
+
+            
+
+        return redirect(routes.Comparacion.asigAlum(curso,grupo,tit));
     }
     public static Result iniciarExam(){
         return ok(IniciarExamen.render());
@@ -111,7 +126,7 @@ public class Application extends Controller {
             System.out.print(cursoForm.get().t_nombre);
             System.out.print(session().get("usuario"));
 
-            Usuario user=Usuario.findByUser(session().get("usuario")); 
+            Usuario user=Usuario.findByUser(session().get("usuario"));
             
             Curso.create(Docente.find.byId(user.n_docente_id),cursoForm.get().t_nombre,cursoForm.get().n_grupo);
             

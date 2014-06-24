@@ -1,25 +1,44 @@
+@(cursos:List[Curso])
 @codecomparator("Welcome to Play") {
 
 
     	<h1 class="page-header">Configurar evaluación</h1>
     	<br>
-    	<form class="form-horizontal well">
+    	<form class="form-horizontal well"  action="registrar_conf" method="post" role="form">
     	 <div class="row form-group">
     	 	<div class="col-md-6">
     	 		<label class="col-md-5 control-label">Titulo del examen</label>
     	 		<div class="col-md-7">
-    	 			<input type="text" class="form-control" >
+    	 			<input type="text" id="titulo" class="form-control" >
     	 		</div>
     	 	</div>
     	 	<div class="col-md-6">
     	 		<label class="col-md-5 control-label">Tiempo</label>
-    	 		<div class="col-md-7">
-    	 			<div class="input-group input-group-sm date" id="datetimepicker1">
-                    <input type="text" class="form-control cambio" id="ingreso1" readonly="" disabled="">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                    </span>
-                </div>
+    	 		<div class="col-md-2" style="width:114px;">
+                <select id="hora"  class="form-control">
+                    <option>hor</option>
+                    
+                </select>
+               
+    	 			
     	 		</div>
+                <span style="position: absolute;font-weight: bold;margin-top: 0%;margin-left:-1.5%;font-size:27px;">:</span>
+                <div class="col-md-2">
+        
+                <select id="min" class="form-control" style="width:84px;margin-left:-15px;">
+                    <option >min</option>
+                    
+
+                </select>
+                </div>
+                <span style="position: absolute;font-weight: bold;margin-top: 0%;font-size:27px;">:</span>
+                <div  class="col-md-2">
+                     <select class="form-control" id="seg" style="width: 82px;margin-left: -8%;">
+                    <option>seg</option>
+                   
+
+                </select>
+                </div>
     	 	</div>
     	 </div>
     	 <div class="row form-group">
@@ -27,34 +46,30 @@
     	 		<label class="col-md-5 control-label">Curso</label>
     	 		<div class="col-md-7">
     	 			
-                    <select id="leg_tip" class="form-control">
-        <option value="000">Programacion II</option>
-        
-    </select>
+                    <select id="cursos" name="curso" class="form-control">
+                    <option>Seleccione curso</option>
+                      @for(curso<-cursos){
+                    <option id="@curso.t_nombre">@curso.t_nombre</option>
+                       }
+                    </select>
     	 		</div>
     	 	</div>
-    	 	<div class="col-md-6">
-    	 		<label class="col-md-5 control-label">Grupo</label>
-    	 		<div class="col-md-7">
-    	 			<select id="leg_tip" class="form-control">
-        <option value="000">Grupo III</option>
-        
-    </select>
-    	 		</div>
+    	 	<div class="col-md-6" id="div_grupo">
+    	 		
     	 	</div>
     	 </div>
     	 <div class="row form-group">
     	 	<div class="col-md-6">
               <label class="col-md-5 control-label">Descripción</label>
               <div class="col-md-7">
-              	<textarea style="width: 849px;height: 109px;"></textarea>
+              	<textarea style="width: 849px;height: 109px;" id="descripcion"></textarea>
               </div>
     	 	</div>
     	 </div>
     	 <hr>
     	 <div class="form-actions"  style="text-align: center;">
-            <button type="submit" class="btn btn-primary left" id="save_med">Guardar</button>
-            <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
+            <a  id="save_conf" class="btn btn-primary left" >Guardar</a>
+            <button type="reset" class="btn btn-default left" >Cancelar</button>
         </div>
     	</form>
     
