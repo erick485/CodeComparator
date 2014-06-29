@@ -25,7 +25,7 @@ create table curso (
 
 create table docente (
   n_docente_id              integer auto_increment not null,
-  t_codigo                  integer,
+  t_codigo                  varchar(255),
   t_nombre                  varchar(255),
   t_apellido_paterno        varchar(255),
   t_apellido_materno        varchar(255),

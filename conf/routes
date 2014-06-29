@@ -16,7 +16,6 @@ GET     /codecomparator/curso       controllers.Application.curso()
 GET     /codecomparator/alumno      controllers.Application.alumno()
 GET     /codecomparator/confEval    controllers.Application.confEvaluacion()
 GET     /codecomparator/asigAlum    controllers.Application.asigAlum(tit:String,tiempo:String,curso:String,grupo:String,descr:String)   
-GET     /codecomparator/iniciarExam controllers.Application.iniciarExam()  
 GET     /codecomparator/compProy     controllers.Application.compProy()
 GET     /codecomparator/cambContr   controllers.Application.cambContr()
 GET     /codecomparator/historiales controllers.Application.historiales()
@@ -33,11 +32,17 @@ GET     /codecomparator/listaAlumnos controllers.Application.listAlumnos(curso:S
 GET    /codecomparator/registrar_alumno  controllers.Application.regisAlum(codigo:String,nombre:String,ap_paterno:String,ap_materno:String,curso:String,grupo:String) 
 
 
+GET    /codecomparator/time    controllers.Comparacion.time()
+
 POST    /codecomparator/registrar_grupo controllers.Application.regisGrupo()
+
+# Comparacion alumno
+
+GET   /CodeAlumno/envio       controllers.Comparacion.envio()
 
 # Comparacion page
 
-GET  /codecomparator/asigAlumno    controllers.Comparacion.asigAlum(curso:String,grupo:String,tit:String)
+GET  /codecomparator/asigAlumno    controllers.Comparacion.asigAlum(curso:String,grupo:String,tit:String,tiempo:String)
 GET  /codecomparator/Home          controllers.Comparacion.home() 
 
 # Map static resources from the /public folder to the /assets URL path

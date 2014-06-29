@@ -98,11 +98,9 @@ public class Application extends Controller {
 
             
 
-        return redirect(routes.Comparacion.asigAlum(curso,grupo,tit));
+        return redirect(routes.Comparacion.asigAlum(curso,grupo,tit,tiempo));
     }
-    public static Result iniciarExam(){
-        return ok(IniciarExamen.render());
-    }
+   
     public static Result compProy(){
         return ok(compProy.render());
     }

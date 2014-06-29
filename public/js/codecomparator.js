@@ -119,12 +119,33 @@ $(function(){
   });
 
   $("#inicio").click(function(){
+
+    hor=$("#time_span").text().substring(0,2);
+    min=$("#time_span").text().substring(3,5);
+    seg=$("#time_span").text().substring(6,8);
+    
+ if(hor.substring(0,1)=="0"){
+     hor=hor.substring(1,2);
+     //alert(hor);
+ }
+ if(min.substring(0,1)=="0"){
+   min=min.substring(1,2);
+      //alert(min);
+
+ } 
+ if(seg.substring(0,1)=="0"){
+    seg=seg.substring(1,2);
+    //alert(seg);
+ }
+    //alert(hor.substring(0,1)+"/"+min.substring(0,1)+"/"+seg.substring(0,1));
+
+   // alert(hor+"/"+min+"/"+seg);
       $("#inicio").hide();
       $("#final").show();
       $("#time").chrony({
-         hour:0,
-         minute:1,
-         second:3,
+         hour:hor,
+         minute:min,
+         second:seg,
          finish:function(){
 
          }

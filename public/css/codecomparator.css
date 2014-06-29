@@ -5,7 +5,7 @@
     cursor: pointer;
 }
 .pep{
-    background-color: #fff;
+    color:#fff;background: #428bca;width: 107px;text-align: center;border-radius: 4px;
     
 }
 #btn_2:hover{

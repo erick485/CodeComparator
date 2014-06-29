@@ -10,7 +10,7 @@ public class Docente extends Model{
 	private static final long serialVersionUID = 1L;
     @Id
     public Integer n_docente_id;
-    public Integer t_codigo; 
+    public String t_codigo; 
     public String t_nombre;
     public String t_apellido_paterno;
     public String t_apellido_materno;
@@ -24,7 +24,7 @@ public class Docente extends Model{
 	);
      
   
-    public static Docente create(Docente docente,String nombre,Integer cod,String ap_paterno,String ap_materno){
+    public static Docente create(Docente docente,String nombre,String cod,String ap_paterno,String ap_materno){
           docente.t_nombre=nombre;
           docente.t_codigo=cod;
           docente.t_apellido_paterno=ap_paterno;
@@ -33,7 +33,7 @@ public class Docente extends Model{
     	return docente;
     } 
 
-    public static Docente findByCod(Integer cod){
+    public static Docente findByCod(String cod){
          return find.where().eq("t_codigo",cod).findUnique();
     }
     

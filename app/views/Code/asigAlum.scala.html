@@ -1,8 +1,140 @@
-@(curso:String,grupo:String,tit:String,alumnos:List[Alumno])
+@(curso:String,grupo:String,tit:String,tiempo:String,alumnos:List[Alumno])
 @comparacion("Welcome to Play") {
 
-  <div class="container">
+  <div class="container" id="asignar_alum">
 	 <br>
+	 <br>
+	 <div class="row">
+	 	 <div class="col-md-1">
+	 	 	<strong>Curso:</strong>
+	 	 </div>
+	 	 <div class="col-md-4">
+           
+	 	 	<p>@curso</p>
+	 	 </div>
+	 </div>
+	  <div class="row">
+	 	 <div class="col-md-1">
+	 	 	<strong>Grupo:</strong>
+	 	 </div>
+	 	 <div class="col-md-4">
+
+	 	 	<p>@grupo</p>
+	 	 </div>
+	 </div>
+	 <div class="row">
+	 	 <div class="col-md-1">
+	 	 	<strong>Tema:</strong>
+	 	 </div>
+	 	 <div class="col-md-4">
+
+	 	 	<p>@tit</p>
+	 	 </div>
+	 </div>
+	 <br>
+	 <div class="row highlight">
+	 	<div class="col-md-8" id="cont_lab">
+	 	<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="1">1</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="2" id="btn_2">2</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span id="3" class="btn btn-primary header_botom" data="3">3</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom" data="4">4</span>	 				
+	 			</div>
+	 		</div>
+	 		<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom" data="5">5</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom"  data="6">6</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom" data="7">7</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom" data="8">8</span>	 				
+	 			</div>
+	 		</div>
+	 		<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="9">9</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="10">10</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="11">11</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="12">12</span>	 				
+	 			</div>
+	 		</div>
+	 		<br>
+	 		<div class="row">
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="13">13</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom" data="14">14</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="15">15</span>
+	 			</div>
+	 			<div class="col-md-3">
+	 				<span class="btn btn-primary header_botom " data="16">16</span>	 				
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<div class="col-md-4">
+	 		<table class="table table-bordered"> 
+	 			<thead>
+	 				<tr>
+	 					<th>Código</th>
+	 					<th>Nombres y Apellidos</th>
+	 				</tr>
+	 			</thead>
+	 			<tbody id="table_cod">
+                       @for(alumno<-alumnos){	 			
+	 				<tr>
+	 					<td id="fila_cod"><span style="display:none;">@alumno.t_codigo</span><div class="pep itemDragable">@alumno.t_codigo</div></td>
+	 					<td>@alumno.t_nombre,@alumno.t_apellido_paterno @alumno.t_apellido_materno</td>
+	 				</tr>
+	 				}
+	 				
+	 			</tbody>
+	 		</table>
+	 	</div>
+	 </div>
+	 <br>
+	
+	</div>
+
+	<div class="container" id="examen_time" style="display:none;">
+			<br>
+		
+	 <div class="row form-group">
+	 	
+	 	<div class="col-md-6">
+	 		<button type="button" id="inicio" class="btn btn-danger"><strong>Iniciar examen </strong> <span class="glyphicon glyphicon-time"></span> </button>
+	 		<button type="button" id="final" style="display:none;" class="btn btn-primary"><strong>Finalizar examen </strong> <span class="glyphicon glyphicon-time"></span> </button>
+	 	</div>
+	 	<div class="col-md-3">
+	 	</div>
+	<span id="time_span" style="display:none;">@tiempo</span>
+	 	<div class="col-md-3" id="clock">
+	 
+	 	</div>
+	 </div>
 	 <br>
 	 <div class="row">
 	 	 <div class="col-md-1">
@@ -31,91 +163,31 @@
 	 	 	<p>@tit</p>
 	 	 </div>
 	 </div>
-	 <br>
-	 <div class="row highlight">
-	 	<div class="col-md-8">
-	 	<br>
-	 		<div class="row">
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">1</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom " id="btn_2">2</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">3</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom">4</button>	 				
-	 			</div>
-	 		</div>
-	 		<br>
-	 		<div class="row">
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom">5</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom">6</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom">7</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom">8</button>	 				
-	 			</div>
-	 		</div>
-	 		<br>
-	 		<div class="row">
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">9</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">10</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">11</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">12</button>	 				
-	 			</div>
-	 		</div>
-	 		<br>
-	 		<div class="row">
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">13</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom">14</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">15</button>
-	 			</div>
-	 			<div class="col-md-3">
-	 				<button class="btn btn-default header_botom ">16</button>	 				
-	 			</div>
-	 		</div>
-	 	</div>
-	 	<div class="col-md-4">
-	 		<table class="table table-bordered"> 
-	 			<thead>
-	 				<tr>
-	 					<th>Código</th>
-	 					<th>Nombres y Apellidos</th>
-	 				</tr>
-	 			</thead>
-	 			<tbody id="table_cod">
-                       @for(alumno<-alumnos){	 			
-	 				<tr>
-	 					<td id="fila_cod">@alumno.t_codigo<div class="pep" style="margin-top:-5% !important;">@alumno.t_codigo</div></td>
-	 					<td>@alumno.t_nombre,@alumno.t_apellido_paterno @alumno.t_apellido_materno</td>
-	 				</tr>
-	 				}
-	 				
-	 			</tbody>
-	 		</table>
-	 	</div>
-	 </div>
-	 <br>
-	
+      
+	<br>
+	 <table class="table table-bordered">
+	 	<thead>
+	 		<tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Estado de envio</th>
+	 		</tr>
+	 	</thead>
+      <tbody id="exam_alumno">
+                     @for(alumno<-alumnos){
+                       <tr style="display:none;">
+      	                <td>@alumno.t_codigo</td>
+                        <td>@alumno.t_nombre</td>
+                        <td>@alumno.t_apellido_paterno @alumno.t_apellido_materno</td>
+                        <td><a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-cloud-download"></span></a></td>
+                       </tr> 
+                     }	 			
+                
+               
+       </tbody>
+	 </table>
 	</div>
+
 }
+
