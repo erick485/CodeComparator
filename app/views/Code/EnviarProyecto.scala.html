@@ -1,5 +1,5 @@
 
-@(curso:String,titulo:String,docente:Docente)
+@(curso:String,titulo:String,docente:Docente,time:String,band:String)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../assets/css/codecomparator.css">
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="@routes.Assets.at("js/jquery.chrony.min.js")"></script>
     <script type="text/javascript" src="@routes.Assets.at("js/jquery.validate.js")"></script>
 	<script type="text/javascript" src="../assets/js/codecomparator.js"></script>
 </head>
@@ -35,10 +36,10 @@
     	<h1 class="page-header">Bienvenido Alumno</h1>
 
 <div class="alert alert-success">
-
-   <strong style="display: block;text-align: center;">Tiempo Restante: 20:10:03</strong>
+    <div id="aux_ti" style="display:none;">@time</div>
+   <strong style="display: block;text-align: center;">Tiempo Restante:<div id="time_env" style="position: absolute;margin-left: 33%;margin-top: -1%;"></div></strong>
     </div>
-    	
+    	<div id="band" style="display:none;">@band</div>
 <br>
 <form class="well">
 <div class="row">
@@ -111,10 +112,35 @@
     </div>
     <script type="text/javascript">
           $(function(){
-              alert($("#time_span").text());
-              console.log("entro");
+              //alert($("#time_span").text());
 
-              $("#div_time").load("http://localhost:9000/codecomparator/time");
+    hor=$("#aux_ti").text().substring(0,2);
+    min=$("#aux_ti").text().substring(3,5);
+    seg=$("#aux_ti").text().substring(6,8);
+    
+   if(hor.substring(0,1)=="0"){
+     hor=hor.substring(1,2);
+     //alert(hor);
+  }
+ if(min.substring(0,1)=="0"){
+   min=min.substring(1,2);
+      //alert(min);
+
+ } 
+ if(seg.substring(0,1)=="0"){
+    seg=seg.substring(1,2);
+    //alert(seg);
+ }
+              //console.log($("#aux_ti").text());
+ $("#time_env").chrony({
+         hour:hor,
+         minute:min,
+         second:seg,
+         finish:function(){
+
+         }
+      });
+              
           }); 
 
     </script>

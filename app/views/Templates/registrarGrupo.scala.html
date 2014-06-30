@@ -34,15 +34,16 @@
 
     	</form>
       
-    	<table class="table table-bordered">
-               <thead>
+      <div id="div_cursos">
+    	<table id="table_cursos" class="table table-bordered">
+               <thead >
                  <tr>
                  	<th>Curso</th>
                  	<th>Grupo</th>
                  	<th>Eliminar</th>
                  </tr>
                </thead>
-               <tbody>
+               <tbody id="body_cursos">
                @for(curso<-cursos){
                	<tr>
                    <td>@curso.t_nombre</td>
@@ -53,6 +54,8 @@
                		
                </tbody>
     	</table>
+
+      </div>
 @for(curso<-cursos){      
 <div class="modal fade" id="@curso.n_curso_id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

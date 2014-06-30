@@ -1,5 +1,15 @@
 $(function(){
  
+ var  num_comp = [];
+var  cod_alum=[];
+
+  $("#table_cursos").dataTable();
+  $('#table_cursos_wrapper').append("<div id='footer-table'></div>");
+  $('#table_cursos_next').html("<i class='glyphicon glyphicon-forward'></i>");
+  $('#table_cursos_previous').html("<i class='glyphicon glyphicon-backward'></i>");
+
+  $('.dataTables_filter input').attr('placeholder', 'Buscar..');
+
    $("#asig_alum").click(function(){
           $("#asignar_alum").show();
 
@@ -21,8 +31,7 @@ $(function(){
 
      alert($("#cont_lab >div:eq(2)").html());
 */
-var  num_comp = [];
-var  cod_alum=[];
+
 
       for(var i=0;i<4;i++){
 
@@ -74,6 +83,16 @@ var  cod_alum=[];
 
 
    });
+
+  
+    $("#mod_alum").click(function(){
+       // alert("Hola Mundo");
+
+        //$(this).attr("href","http://localhost:9000/CodeAlumno/envio?time=24");
+            // alert($("#time").text());
+        window.open("http://localhost:9000/CodeAlumno/envio?time="+$("#time").text()+"&band=true",'_blank');
+    });
+    // $.get( "http://localhost:9000/CodeAlumno/envio?time=24" );
 
 
  });
