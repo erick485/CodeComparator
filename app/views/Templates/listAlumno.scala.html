@@ -1,6 +1,64 @@
 @(alumnos:List[Alumno])
 
-<table class="table table-bordered">
+@if(flash.containsKey("cod_alum")){
+      
+
+        <script type="text/javascript">
+          $(function(){
+              
+             // alert("El alumno ya existe");
+             /* $("#confir_clave").addClass("has-error");
+               $("#message_clave").text("Las contraseñas ingresadas no coinciden");
+
+
+               $("#message_clave").show();*/
+
+if($("#message").attr("data")=="false"){
+$("#message").hide();
+}
+else{
+$("#message").removeClass("alert-success");
+               $("#message").addClass("alert-danger");
+
+
+             $("#message").show();
+               $("#text_message").text("El alumno ya existe");
+}
+          });
+
+        </script>
+  }
+@if(flash.containsKey("exito_alum")){
+      
+
+        <script type="text/javascript">
+          $(function(){
+
+           if($("#message").attr("data")=="false"){
+              
+
+              $("#message").hide();
+           }else{
+             
+               $("#message").removeClass("alert-danger");
+               $("#message").addClass("alert-success");
+
+
+             $("#message").show();
+               $("#text_message").text("El alumno se guardo correctamente");
+           }
+              
+             // alert("El alumno ya existe");
+             /* $("#confir_clave").addClass("has-error");
+               $("#message_clave").text("Las contraseñas ingresadas no coinciden");
+               $("#message_clave").show();*/
+
+          });
+          
+        </script>
+  }
+ 
+<table id="lista_alumnos" class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Codigo</th>
@@ -17,7 +75,7 @@
                  <td>@alumno.t_codigo</td>
                  <td>@alumno.t_nombre</td>
                  <td>@alumno.t_apellido_paterno  @alumno.t_apellido_materno</td>
-                 <td><a href="#" class="btn btn-warning" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                 <td><a href="#" class="btn btn-warning edit_alum" ><span class="glyphicon glyphicon-pencil"></span></a></td>
                  <td><button  class="btn  btn-danger" data-toggle="modal" data-target="#@alumno.n_alumno_id" ><span class="glyphicon glyphicon-trash"></span></button></td>
 				</tr>
 			}
@@ -51,9 +109,51 @@
 
 <script type="text/javascript">
   $(function(){
+   if($("#lista_alumnos tbody>tr").length>0){
+      $("#list_alumnos").show();
+   }
+   else{
+          $("#list_alumnos").hide();
+   }
+      $("#lista_alumnos").dataTable();
+      $('#lista_alumnos_wrapper').append("<div id='footer-table'></div>");
+      $('#lista_alumnos_next').html("<i class='glyphicon glyphicon-forward'></i>");
+      $('#lista_alumnos_previous').html("<i class='glyphicon glyphicon-backward'></i>");
+
+      $('.dataTables_filter input').attr('placeholder', 'Buscar..');
+
+     $(".edit_alum").click(function(){
+//        alert("Editar:"+$(this).parent().parent().eq(0).find("td").eq(1).text());
+
+$("#footer_save").hide();
+
+$("#footer_act").show();
+        var cod=$(this).parent().parent().eq(0).find("td").eq(0).text();
+
+        var nom=$(this).parent().parent().eq(0).find("td").eq(1).text();
+        var aux=$(this).parent().parent().eq(0).find("td").eq(2).text();
+      
+        var cade=aux.split(" ");
+     console.log(cade);
+       var ap_pat= cade[0];
+       var ap_mat= cade[2];
+
+      //  var ap_mat=$(this).parent().parent().eq(3).text();
+        
+         $("#codigo").val(cod);
+         $("#nombre").val(nom);
+         $("#ap_paterno").val(ap_pat);
+         $("#ap_materno").val(ap_mat); 
+
+        //alert($(this).parent().parent().eq(0).text());
+     });
+
+  
+
      $(".deleteAlum").click(function(){
           
           //alert("hola mundo");
+          $("#message").attr("data","false");
 
           curs=$("#cursos").val();
           grupo=$("#grup").val();
@@ -64,10 +164,15 @@
         });*/
         //$("#"+id).show();
         $("#"+id).modal("hide");
-
+/*
+setTimeout(function(){
+            $("#message").hide();
+        }, 1000);
+*/
         setTimeout(function(){
+
 $("#list_alumnos").load("http://localhost:9000/codecomparator/listaAlumnos?curso="+escape(curs)+"&grupo="+escape(grupo)+"&elim="+escape(id));
-        }, 100);
+        }, 500);
      /* $("#list_alumnos").load("http://localhost:9000/codecomparator/listAlumnos?curso="+escape(curs)+"&grupo="+escape(grupo)+"&elim="+escape(id));
        */ 
      });

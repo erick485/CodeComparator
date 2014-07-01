@@ -15,7 +15,7 @@ GET     /codecomparator/cerrar      controllers.Application.logout()
 GET     /codecomparator/curso       controllers.Application.curso()  
 GET     /codecomparator/alumno      controllers.Application.alumno()
 GET     /codecomparator/confEval    controllers.Application.confEvaluacion()
-GET     /codecomparator/asigAlum    controllers.Application.asigAlum(tit:String,tiempo:String,curso:String,grupo:String,descr:String)   
+GET     /codecomparator/asigAlum    controllers.Application.asigAlum(tit:String,tiempo:String,curso:String,grupo:String,descr:String,fech:String)   
 GET     /codecomparator/compProy     controllers.Application.compProy()
 GET     /codecomparator/cambContr   controllers.Application.cambContr()
 GET     /codecomparator/historiales controllers.Application.historiales()
@@ -29,8 +29,12 @@ GET     /codecomparator/listAlumnos controllers.Application.listAlum(curso:Strin
 
 GET     /codecomparator/listaAlumnos controllers.Application.listAlumnos(curso:String,grupo:String,elim:Integer)
 
+
+
 GET    /codecomparator/registrar_alumno  controllers.Application.regisAlum(codigo:String,nombre:String,ap_paterno:String,ap_materno:String,curso:String,grupo:String) 
 
+
+GET    /codecomparator/update_alumno  controllers.Application.updateAlum(codigo:String,nombre:String,ap_paterno:String,ap_materno:String,curso:String,grupo:String) 
 
 GET    /codecomparator/time    controllers.Comparacion.time()
 

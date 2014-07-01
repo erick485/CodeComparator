@@ -23,9 +23,10 @@ public class Application extends Controller {
         return ok(crearCuenta.render());
     }
      public static Result curso(){
+        Usuario user=Usuario.findByUser(session().get("usuario")); 
         
 
-        return ok(registrarGrupo.render(Curso.allCurso()));
+        return ok(registrarGrupo.render(Curso.findCursoDocent(user.n_docente_id)));
 
     }
      public static Result alumno(){
@@ -36,19 +37,43 @@ public class Application extends Controller {
 
     public static Result regisAlum(String cod,String nombre,String ap_paterno,String ap_materno,String curso,String grupo){
        Form<Alumno> alumForm =form(Alumno.class).bindFromRequest();    	
+              Usuario user=Usuario.findByUser(session().get("usuario")); 
+
        if(alumForm.hasErrors()){
                  return badRequest();
         }else{
-           Usuario user=Usuario.findByUser(session().get("usuario")); 
 
-           Alumno.create(Docente.find.byId(user.n_docente_id),cod,curso,grupo,
-           	nombre,ap_paterno,ap_materno);
+          if (Alumno.findByCod(cod) != null) {
+                flash("cod_alum","El codigo");
+               return ok(listAlumno.render(Alumno.findAlumno(user.n_docente_id,curso,grupo)));
+          }
+          else{
+            
+                flash("exito_alum","El codigo");
+            Alumno.create(Docente.find.byId(user.n_docente_id),cod,curso,grupo,
+            nombre,ap_paterno,ap_materno);
             
          //   return redirect(routes.Application.alumno());      
           return ok(listAlumno.render(Alumno.findAlumno(user.n_docente_id,curso,grupo)));
+          }
+          
         }
     }
+   public static Result updateAlum(String cod,String nombre,String ap_paterno,String ap_materno,String curso,String grupo){
+               Form<Alumno> alumForm =form(Alumno.class).bindFromRequest();     
 
+             Usuario user=Usuario.findByUser(session().get("usuario"));
+
+         if(alumForm.hasErrors()){
+                 return badRequest();
+        }else{
+             Alumno.edit(cod,nombre,ap_paterno,ap_materno,user.n_docente_id,curso,grupo);
+
+             System.out.print("--"+curso+" "+grupo);
+        return ok(listAlumno.render(Alumno.findAlumno(user.n_docente_id,curso,grupo)));
+
+        }                    
+     }
     public static Result listAlum(String curso,String grupo){
        
      
@@ -91,10 +116,10 @@ public class Application extends Controller {
 
         return ok(confEval.render(Curso.findCursoDocent(user.n_docente_id)));
     }
-    public static Result asigAlum(String tit,String tiempo,String curso,String grupo,String descr){
+    public static Result asigAlum(String tit,String tiempo,String curso,String grupo,String descr,String fech){
         Usuario user=Usuario.findByUser(session().get("usuario"));
 
-        Evaluacion.create(Docente.find.byId(user.n_docente_id),tit,tiempo,curso,grupo,descr);
+        Evaluacion.create(Docente.find.byId(user.n_docente_id),tit,tiempo,curso,grupo,descr,fech);
 
             
 
@@ -186,6 +211,9 @@ public class Application extends Controller {
                 
                 Docente docent=Docente.findByCod(docente.get().t_codigo); 
                  
+                session().clear();
+                session("usuario",docentForm.get().t_usuario);
+
                 Usuario.create(docent.n_docente_id,docentForm.get().t_usuario,docentForm.get().t_password,docentForm.get().rep_password);
                 flash("registro","Se registró correctamente");
                 return badRequest(crearCuenta.render());            

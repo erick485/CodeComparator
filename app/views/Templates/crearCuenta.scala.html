@@ -122,7 +122,7 @@
       <div class="row">
     		<div id="usuar" class="col-md-12 form-group">
     			<label >Usuario</label>    			
-                   <input type="text" name="t_usuario" class="form-control">    		
+                   <input type="text" id="user" name="t_usuario" class="form-control">    		
            <span id="message_usuario" style="display:none;color:#b94a48;"></span>
     		</div>
     		
@@ -147,7 +147,7 @@
     	<hr>
     	<div class="form-actions"  style="text-align: center;">
           <button  class="btn btn-primary left" id="save_med" >Guardar</button>
-            <button type="reset" class="btn btn-default left" id="cancel_med">Cancelar</button>
+            <a href="@routes.Application.codecomparator()" class="btn btn-default left" id="cancel_med">Cancelar</a>
         </div>
     </form>
 	
@@ -167,11 +167,14 @@
       </div>
       <div class="modal-footer">
         
-        <a href="@routes.Application.codecomparator()" class="btn btn-primary">Aceptar</a>        
+        <a id="btn_aceptar" href="@routes.Application.home()" class="btn btn-primary">Aceptar</a>        
       </div>
     </div>
   </div>
 </div>
+
+
+
 </body>
 </html>
 

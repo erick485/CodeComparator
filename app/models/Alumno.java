@@ -17,6 +17,7 @@ public class Alumno extends Model{
   @ManyToOne(fetch=FetchType.LAZY)
    @JoinColumn(name="n_docente_id")
    public Docente docente;
+
   public static Finder<Integer,Alumno> find = new Finder<Integer,Alumno>(
 			Integer.class,Alumno.class
 	);
@@ -39,6 +40,23 @@ public class Alumno extends Model{
         return alum;
     }
 
+    public static Alumno findByCod(String cod){
+         return find.where().eq("t_codigo",cod).findUnique();
+    }
+   public static Alumno findDetAlum(String cod,Integer docent,String curso,String grupo){
+         return find.where().eq("t_curso",curso).eq("t_grupo",grupo)
+        .eq("docente.n_docente_id",docent).eq("t_codigo",cod).findUnique();
+    }
+
+   public static Alumno edit(String codigo,String name,String ap_paterno,String ap_materno,Integer docent,String curso,String grupo){
+       Alumno alum=Alumno.findDetAlum(codigo,docent,curso,grupo);
+        alum.t_nombre=name;
+        alum.t_apellido_materno=ap_materno;
+        alum.t_apellido_paterno=ap_paterno;
+        alum.update();
+    return alum;
+ 
+   }
     public static List<Alumno> findAlumno(Integer docent,String curso,String grupo){
      return find.where()
         .eq("t_curso",curso)

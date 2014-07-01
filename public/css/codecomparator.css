@@ -1,3 +1,42 @@
+#lista_alumnos_length{
+    display:none;
+}
+
+#lista_alumnos_paginate{
+    position: absolute;
+    margin-top: -17px;
+    left: 46%;
+}
+#lista_alumnos_info{
+    float: left;
+    margin-top: -12px;
+    margin-left: 18px;
+    font-size: 10px;
+    color: rgb(2, 2, 2);
+}
+
+
+#lista_alumnos_previous{
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 15px;
+    border-radius: 5px;
+}
+#lista_alumnos_next{
+    cursor: pointer;
+    margin-left: 19px;
+    display: inline-block;
+    padding: 3px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 15px;
+    border-radius: 5px;
+}
+
+
 #table_cursos_length{
     display:none;
 }

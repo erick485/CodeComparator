@@ -1,9 +1,37 @@
 
 $(function(){
   
-   $("#save_conf").click(function(){
 
+   //alert($("#lista_alumnos tbody>tr").length);
+
+   /*if($("#lista_alumnos tbody>tr").length==0){
+      $("#list_alumnos").hide();
+   }*/
+
+   if($("#body_cursos>tr").length>0){
+      $("#div_cursos").show();
+   }else{
+      $("#div_cursos").hide(); 
+   }
+
+   $("#save_conf").click(function(){
+    var f = new Date();
+       
+      var dia=f.getDate();
+       if (dia<10) {
+           dia="0"+dia;
+            
+       }
+
+      var mes=f.getMonth()+1;       
+       
+       if (mes<10) {
+        mes="0"+mes;
+       } 
+
+      var fecha=dia + "/" + mes+ "/" + f.getFullYear();
      
+
     $("#list_eval").append("<li><a>Asignar Alumno</a></li>");
     //setTimeout(function(){
      $("#asig_alum").show();
@@ -17,7 +45,7 @@ $(function(){
     grupo=$("#grup").val();
     descrip=$("#descripcion").val();
 
-        $(this).attr("href","http://localhost:9000/codecomparator/asigAlum?tit="+escape(titulo)+"&tiempo="+escape(tiempo)+"&curso="+escape(curso)+"&grupo="+escape(grupo)+"&descr="+escape(descrip));
+        $(this).attr("href","http://localhost:9000/codecomparator/asigAlum?tit="+escape(titulo)+"&tiempo="+escape(tiempo)+"&curso="+escape(curso)+"&grupo="+escape(grupo)+"&descr="+escape(descrip)+"&fech="+escape(fecha));
    });
 
   for(var i=0;i<6;i++){

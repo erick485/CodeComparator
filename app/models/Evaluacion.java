@@ -10,6 +10,7 @@ public class Evaluacion extends Model{
   public Integer n_evaluacion_id;
   public String titulo;
   public String tiempo;
+  public String fecha;
   public String curso;
   public String grupo;
   public String descripcion;
@@ -21,17 +22,18 @@ public class Evaluacion extends Model{
 			Integer.class,Alumno.class
 	);
      
-     public Evaluacion(Docente docente,String titulo,String tiempo,String curso,String grupo,String descrip){
+     public Evaluacion(Docente docente,String titulo,String tiempo,String curso,String grupo,String descrip,String fech){
           this.docente=docente;
           this.titulo=titulo;
           this.tiempo=tiempo;
+          this.fecha=fech;
           this.curso=curso;
           this.grupo=grupo;
           this.descripcion=descrip;
      }
 
-    public static Evaluacion create(Docente docente,String titulo,String tiempo,String curso,String grupo,String descrip){
-    	Evaluacion eval=new Evaluacion(docente,titulo,tiempo,curso,grupo,descrip);
+    public static Evaluacion create(Docente docente,String titulo,String tiempo,String curso,String grupo,String descrip,String fech){
+    	Evaluacion eval=new Evaluacion(docente,titulo,tiempo,curso,grupo,descrip,fech);
     	eval.save();
     	return eval;
     }

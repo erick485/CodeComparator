@@ -2,6 +2,8 @@
 @codecomparator("Welcome to Play") {
       
 <br>		
+
+
 		<form class="form-horizontal" action="registrar_alumno" method="post" role="form" >
 		<div class="row form-group">
 		      <div class="col-md-6">
@@ -60,16 +62,22 @@
            </div>
     </div>
 		<hr>
-		<div class="form-actions"  style="text-align: center;">
+		<div class="form-actions"  id="footer_save" style="text-align: center;">
             <a href="#" id="save_alum" class="btn btn-primary left" >Guardar</a>
-            <button type="reset" class="btn btn-default left" >Cancelar</button>
-        </div>
+            <a id="nuevo" class="btn btn-default left" >Nuevo</a>
+    </div>
+
+  <div class="form-actions" id="footer_act" style="text-align: center;display:none;">
+            <a  id="act_alum" class="btn btn-primary left" >Actualizar</a>
+            <a id="cancel_alum"  class="btn btn-default left" >Cancelar</a>
+    </div>
+
 
 		</div>
-		
-        <div class="alert alert-success">
-   <strong style="display: block;text-align: center;">Registro exitoso</strong>
-    </div>
+		<div id="message" style="display:none;" class="alert alert-success">
+   <strong style="display: block;text-align: center;" id="text_message"></strong>
+  </div>
+        
 		</form>	
 		<br>
 		<div id="list_alumnos">
@@ -80,14 +88,51 @@
 	$(function(){
          
 
-   $("#save_alum").click(function(){
-     
+
+
+   $("#cancel_alum").click(function(){
+    $("#footer_save").show();
+    $("#footer_act").hide();
+     $("#codigo").val("");
+        $("#nombre").val("");
+        $("#ap_paterno").val("");
+        $("#ap_materno").val("");
+   });
+
+    $("#nuevo").click(function(){
+        
+        $("#codigo").val("");
+        $("#nombre").val("");
+        $("#ap_paterno").val("");
+        $("#ap_materno").val("");
+        $("#message").hide();
+    });
+
+   $("#act_alum").click(function(){
       cod=$("#codigo").val();
       nombre=$("#nombre").val();
       ap_paterno=$("#ap_paterno").val();
       ap_materno=$("#ap_materno").val();
       curso=$("#cursos").val();
       grupo=$("#grup").val();
+
+
+     $("#list_alumnos").load("http://localhost:9000/codecomparator/update_alumno?codigo="+escape(cod)+"&nombre="+escape(nombre)+"&ap_paterno="+escape(ap_paterno)+"&ap_materno="+escape(ap_materno)+"&curso="+escape(curso)+"&grupo="+escape(grupo));    
+   });
+
+     
+   $("#save_alum").click(function(){
+     
+     $("#list_alumnos").show();
+      cod=$("#codigo").val();
+      nombre=$("#nombre").val();
+      ap_paterno=$("#ap_paterno").val();
+      ap_materno=$("#ap_materno").val();
+      curso=$("#cursos").val();
+      grupo=$("#grup").val();
+     
+          $("#message").attr("data","true");
+
      $("#list_alumnos").load("http://localhost:9000/codecomparator/registrar_alumno?codigo="+escape(cod)+"&nombre="+escape(nombre)+"&ap_paterno="+escape(ap_paterno)+"&ap_materno="+escape(ap_materno)+"&curso="+escape(curso)+"&grupo="+escape(grupo));
    });
 
