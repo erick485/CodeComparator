@@ -38,7 +38,7 @@ POST    /codecomparator/registrar_grupo controllers.Application.regisGrupo()
 
 # Comparacion alumno
 
-GET   /CodeAlumno/envio       controllers.Comparacion.envio()
+GET   /CodeAlumno/envio       controllers.Comparacion.envio(time:String,band:String)
 
 # Comparacion page
 

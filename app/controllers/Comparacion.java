@@ -25,13 +25,13 @@ public class Comparacion extends Controller {
      	return ok(homeCode.render());
      }
 
-     public static 	Result envio(){
+     public static 	Result envio(String time,String band){
         Usuario user=Usuario.findByUser(session().get("usuario")); 
 
         Docente doc=Docente.find.byId(user.n_docente_id);
         String curso=session().get("curso");  
         String tit=session().get("titulo");
-     	return ok(EnviarProyecto.render(curso,tit,doc));
+     	return ok(EnviarProyecto.render(curso,tit,doc,time,band));
      }
 
      public static Result time(){
